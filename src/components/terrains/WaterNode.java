@@ -1,8 +1,8 @@
 package components.terrains;
 
 import components.AMapConstants;
-import components.interfaces.IMap;
 import components.Node;
+import components.interfaces.IMap;
 
 /**
  * @author Navaneeth Sen

@@ -1,7 +1,5 @@
 package components.interfaces;
 
-import components.Node;
-
 import java.util.ArrayList;
 
 /**
@@ -11,17 +9,17 @@ import java.util.ArrayList;
 
 public interface IMap
 {
-    void printMap(ArrayList<ArrayList<Node>> map);
+    void printMap(ArrayList<ArrayList<INode>> map);
 
     int getMapWidth();
 
     int getMapHeight();
 
-    ArrayList<ArrayList<Node>> getMap();
+    ArrayList<ArrayList<INode>> getMap();
 
-    Node getNodeAtPosition(int x, int y);
+    INode getNodeAtPosition(int x, int y);
 
-    float getDistanceBetween(Node node1, Node node2);
+    float getDistanceBetween(INode node1, INode node2);
 
     INode getStartNode();
 

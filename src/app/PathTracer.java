@@ -1,9 +1,14 @@
 package app;
 
 import algorithm.A_Star;
-import algorithm.heuristics.*;
-import components.*;
+import algorithm.heuristics.IHeuristic;
+import algorithm.heuristics.ManhattanHeuristic;
+import components.AMapConstants;
+import components.GridMap;
+import components.Path;
+import components.TouchPoint;
 import components.interfaces.IMap;
+import components.interfaces.INode;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -65,12 +70,13 @@ public class PathTracer
 
     /**
      * Will repaint the graph with the calculated path
+     *
      * @param map_nodes
      * @param mapHeight
      * @param mapWidth
-     * @param set to paint the touchpoints with a different character
+     * @param set       to paint the touchpoints with a different character
      */
-    public static void printMap(ArrayList<ArrayList<Node>> map_nodes, int mapHeight, int mapWidth, HashSet<String> set)
+    public static void printMap(ArrayList<ArrayList<INode>> map_nodes, int mapHeight, int mapWidth, HashSet<String> set)
     {
         for (int i = 0; i < mapHeight; i++)
         {

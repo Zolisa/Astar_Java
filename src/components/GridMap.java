@@ -1,6 +1,8 @@
 package components;
 
+import components.interfaces.INode;
 import components.terrains.*;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -50,12 +52,12 @@ public class GridMap extends AMap
         Node node;
 
         // Initialize the Node map
-        map = new ArrayList<ArrayList<Node>>();
+        map = new ArrayList<ArrayList<INode>>();
 
         for (int x = 0; x < mapHeight; x++)
         {
             // Construct a row
-            map.add(new ArrayList<Node>());
+            map.add(new ArrayList<INode>());
             for (int y = 0; y < mapWidth; y++)
             {
                 switch (char_map[x][y])
@@ -97,7 +99,6 @@ public class GridMap extends AMap
      * Read the number of chars in line as - width
      *
      * @param file_name map file
-     *
      */
     private void populateMapDimensions(String file_name) throws Exception
     {
@@ -149,7 +150,6 @@ public class GridMap extends AMap
     }
 
     /**
-     *
      * @param map_file
      * @return a reader to the given file
      * @throws FileNotFoundException
@@ -161,11 +161,12 @@ public class GridMap extends AMap
 
     /**
      * Prints the 2D char map for debug purposes
+     *
      * @param map
      */
     private void printMap(char[][] map)
     {
-        System.out.println("mapWidth [" + mapWidth + "] mapHeight [" + mapHeight +"]");
+        System.out.println("mapWidth [" + mapWidth + "] mapHeight [" + mapHeight + "]");
         for (int i = 0; i < mapHeight; i++)
         {
             for (int j = 0; j < mapWidth; j++)

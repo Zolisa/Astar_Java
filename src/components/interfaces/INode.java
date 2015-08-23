@@ -5,12 +5,12 @@ package components.interfaces;
  * @since 2015/08/21
  */
 
-import components.Node;
+import java.util.ArrayList;
 
 /**
  * The interface which exposes the features available with a Node
  */
-public interface INode
+public interface INode extends Comparable<INode>
 {
     float getHeuristicCost();
 
@@ -20,7 +20,7 @@ public interface INode
 
     void setMovementCostFromStart(float movementCost);
 
-    int setParent(Node parent);
+    int setParent(INode parent);
 
     int getX();
 
@@ -37,5 +37,9 @@ public interface INode
     float getWeight();
 
     void setWeight(float weight);
+
+    int getDepth();
+
+    ArrayList<INode> getNeighbourList(boolean allowDiagonalMovement);
 
 }

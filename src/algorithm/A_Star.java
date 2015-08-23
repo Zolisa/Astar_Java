@@ -1,7 +1,8 @@
 package algorithm;
 
 import algorithm.heuristics.IHeuristic;
-import components.*;
+import components.Path;
+import components.SortedList;
 import components.interfaces.IMap;
 import components.interfaces.INode;
 import components.terrains.EndNode;
@@ -23,7 +24,7 @@ public class A_Star
     private IHeuristic heuristic;
 
     // list of nodes that has been visited
-    private ArrayList<Node> closedList;
+    private ArrayList<INode> closedList;
 
     // List of nodes which will be considered while searching
     // This list will be always in a sorted form
@@ -37,6 +38,7 @@ public class A_Star
 
     /**
      * Constructor which will set the different params and does the path finding
+     *
      * @param map
      * @param heuristic
      * @param allowDiagonalMovement
@@ -50,7 +52,7 @@ public class A_Star
         openList = new SortedList();
 
         // containing nodes that have already been searched
-        closedList = new ArrayList<Node>();
+        closedList = new ArrayList<INode>();
 
         // Allows the mover to jump diagonally if true
         this.allowDiagonalMovement = allowDiagonalMovement;
@@ -80,7 +82,7 @@ public class A_Star
             while (openList.size() != 0)
             {
                 // Get the first node from the not-searched list(It will be sorted based on the lowest cost)
-                Node current = openList.first();
+                INode current = openList.first();
 
                 // Is our current node the end node, then DONE!
                 if (current.getX() == map.getEndNode().getX() && current.getY() == map.getEndNode().getY())
@@ -95,12 +97,12 @@ public class A_Star
                 closedList.add(current);
 
                 // get all the valid neighbours to the current node
-                ArrayList<Node> neighbourList = current.getNeighbourList(allowDiagonalMovement);
+                ArrayList<INode> neighbourList = current.getNeighbourList(allowDiagonalMovement);
 
                 // See if we can get the best neighbour to jump to
                 for (int i = 0; i < neighbourList.size(); i++)
                 {
-                    Node neighbour = neighbourList.get(i);
+                    INode neighbour = neighbourList.get(i);
 
                     // a boolean to check if teh neighbour is good for a jump
                     boolean isGoodNeighbour;
@@ -150,7 +152,6 @@ public class A_Star
     }
 
     /**
-     *
      * @param node target node - can be end node or something close to it.
      * @return
      */
@@ -181,7 +182,6 @@ public class A_Star
     }
 
     /**
-     *
      * @return the shortest path calculated
      */
     public Path getShortestPath()

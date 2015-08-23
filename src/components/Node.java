@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @since 2015/08/20
  */
 
-public abstract class Node implements Comparable<Node>, INode
+public abstract class Node implements INode
 {
     /**
      * The x coordinate of the node
@@ -94,9 +94,9 @@ public abstract class Node implements Comparable<Node>, INode
      * @return The depth we have no reached in searching
      */
     @Override
-    public int setParent(Node parent)
+    public int setParent(INode parent)
     {
-        depth = parent.depth + 1;
+        depth = parent.getDepth() + 1;
         this.parent = parent;
 
         return depth;
@@ -104,6 +104,7 @@ public abstract class Node implements Comparable<Node>, INode
 
     /**
      * The X co-ordinate of Node
+     *
      * @return x
      */
     @Override
@@ -114,6 +115,7 @@ public abstract class Node implements Comparable<Node>, INode
 
     /**
      * The Y co-ordinate of Node
+     *
      * @return y
      */
     @Override
@@ -122,36 +124,18 @@ public abstract class Node implements Comparable<Node>, INode
         return y;
     }
 
-    /**
-     * Compares the object based on the fCost.
-     * Helps in keeping teh Sorted List sorted
-     */
-    public int compareTo(Node other)
+    @Override
+    public int getDepth()
     {
-        Node o = other;
-
-        float fCost = getHeuristicCost() + getMovementCostFromStart();
-        float ofCost = o.getHeuristicCost() + o.getMovementCostFromStart();
-
-        if (fCost < ofCost)
-        {
-            return -1;
-        }
-        else if (fCost > ofCost)
-        {
-            return 1;
-        }
-        else
-        {
-            return 0;
-        }
+        return depth;
     }
 
     /**
      * Returns the list of Neighbour nodes of this node
+     *
      * @param allowDiagonalMovement - Will include the diagonal elements
      * @return list of neighbour Nodes
-     *
+     * <p/>
      * Node Neighbours
      * ________________
      * |    |    |    |
@@ -163,11 +147,10 @@ public abstract class Node implements Comparable<Node>, INode
      * |    |    |    |
      * | SW | S  | SE |
      * ----------------
-     *
      */
-    public ArrayList<Node> getNeighbourList(boolean allowDiagonalMovement)
+    public ArrayList<INode> getNeighbourList(boolean allowDiagonalMovement)
     {
-        ArrayList<Node> neighborList = new ArrayList<Node>();
+        ArrayList<INode> neighborList = new ArrayList<INode>();
 
         // North
         if (!(y == 0))
@@ -226,6 +209,7 @@ public abstract class Node implements Comparable<Node>, INode
 
     /**
      * Get the weight of the node
+     *
      * @return weight
      */
     public float getWeight()
@@ -235,10 +219,36 @@ public abstract class Node implements Comparable<Node>, INode
 
     /**
      * Sets the weight of the Node
+     *
      * @param weight
      */
     public void setWeight(float weight)
     {
         this.weight = weight;
+    }
+
+    /**
+     * Compares the object based on the fCost.
+     * Helps in keeping teh Sorted List sorted
+     */
+    public int compareTo(INode other)
+    {
+        INode o = other;
+
+        float fCost = getHeuristicCost() + getMovementCostFromStart();
+        float ofCost = o.getHeuristicCost() + o.getMovementCostFromStart();
+
+        if (fCost < ofCost)
+        {
+            return -1;
+        }
+        else if (fCost > ofCost)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
     }
 }

@@ -23,6 +23,7 @@ public class Path
 
     /**
      * Get Length of teh path
+     *
      * @return
      */
     public int getLength()
@@ -32,6 +33,7 @@ public class Path
 
     /**
      * Get the touchPoint at a particular Index
+     *
      * @param index
      * @return
      */
@@ -52,6 +54,7 @@ public class Path
 
     /**
      * Append Touch points to the list
+     *
      * @param x
      * @param y
      */
@@ -62,6 +65,7 @@ public class Path
 
     /**
      * Prepend touch points to the List
+     *
      * @param x
      * @param y
      */

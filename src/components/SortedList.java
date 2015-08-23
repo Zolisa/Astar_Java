@@ -1,5 +1,7 @@
 package components;
 
+import components.interfaces.INode;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -13,14 +15,14 @@ public class SortedList
     /**
      * The list of elements
      */
-    private ArrayList<Node> list = new ArrayList<Node>();
+    private ArrayList<INode> list = new ArrayList<INode>();
 
     /**
      * Retrieve the first element from the list
      *
      * @return The first element from the list
      */
-    public Node first()
+    public INode first()
     {
         return list.get(0);
     }
@@ -38,7 +40,7 @@ public class SortedList
      *
      * @param o The element to add
      */
-    public void add(Node o)
+    public void add(INode o)
     {
         list.add(o);
     }
@@ -56,7 +58,7 @@ public class SortedList
      *
      * @param o The element to remove
      */
-    public void remove(Node o)
+    public void remove(INode o)
     {
         list.remove(o);
     }
@@ -77,7 +79,7 @@ public class SortedList
      * @param o The element to search for
      * @return True if the element is in the list
      */
-    public boolean contains(Node o)
+    public boolean contains(INode o)
     {
         return list.contains(o);
     }

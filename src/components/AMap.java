@@ -14,7 +14,7 @@ public class AMap extends AMapConstants implements IMap
 {
 
     // The translated map, which is an ArrayList of ArrayList of Nodes
-    protected ArrayList<ArrayList<Node>> map;
+    protected ArrayList<ArrayList<INode>> map;
 
     // map width - number of tiles across the x axis
     protected int mapWidth;
@@ -30,6 +30,7 @@ public class AMap extends AMapConstants implements IMap
 
     /**
      * returns the width of the map
+     *
      * @return map width
      */
     @Override
@@ -40,6 +41,7 @@ public class AMap extends AMapConstants implements IMap
 
     /**
      * Returns the height of the map
+     *
      * @return map height
      */
     @Override
@@ -50,34 +52,37 @@ public class AMap extends AMapConstants implements IMap
 
     /**
      * Returns the Node Map
+     *
      * @return Node map
      */
     @Override
-    public ArrayList<ArrayList<Node>> getMap()
+    public ArrayList<ArrayList<INode>> getMap()
     {
         return map;
     }
 
     /**
      * Get the node at position x, y in the Node map
+     *
      * @param x
      * @param y
      * @return
      */
     @Override
-    public Node getNodeAtPosition(int x, int y)
+    public INode getNodeAtPosition(int x, int y)
     {
         return map.get(x).get(y);
     }
 
     /**
      * Gets the distance between two nodes
+     *
      * @param node_1
      * @param node_2
      * @return
      */
     @Override
-    public float getDistanceBetween(Node node_1, Node node_2)
+    public float getDistanceBetween(INode node_1, INode node_2)
     {
         // if the nodes are located towards the vertical or horizontal to each other, return 0
         // this is returning zero as the weight of the node will be used for calculating the cost
@@ -95,6 +100,7 @@ public class AMap extends AMapConstants implements IMap
 
     /**
      * gets teh Start Node
+     *
      * @return startNode
      */
     @Override
@@ -105,6 +111,7 @@ public class AMap extends AMapConstants implements IMap
 
     /**
      * Gets teh End Node
+     *
      * @return endNode
      */
     @Override
@@ -115,10 +122,11 @@ public class AMap extends AMapConstants implements IMap
 
     /**
      * Prints the Node map in a 2d representation
+     *
      * @param map
      */
     @Override
-    public void printMap(ArrayList<ArrayList<Node>> map)
+    public void printMap(ArrayList<ArrayList<INode>> map)
     {
         for (int i = 0; i < mapHeight; i++)
         {
