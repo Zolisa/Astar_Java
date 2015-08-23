@@ -91,6 +91,7 @@ public class A_Star
                 {
                     // if Yes, Construct the Path
                     shortestPath = constructPath(current);
+                    return;
                 }
 
                 // move current Node to the already searched list
@@ -121,7 +122,6 @@ public class A_Star
                         // current Nodes MovementCostFromStart + distance between the nodes + weight of the neighbour node
                         // The g-score is the shortest distance from startNode to currentNode.
                         float neighbourMovementCostFromStart = (current.getMovementCostFromStart() + map.getDistanceBetween(current, neighbour) + neighbour.getWeight());
-//                        System.out.println("  current Node = " + current + ", MovementCost() = " + current.getMovementCostFromStart() +", Distance with " + neighbour.getNodeName() + " = " +  map.getDistanceBetween(current, neighbour) +", neighbourMovementCostFromStart = " + neighbourMovementCostFromStart);
 
                         // neighbour with the lower movement cost from start than cif we move from current to that node
                         if (openList.contains(neighbour))
@@ -144,6 +144,7 @@ public class A_Star
                             neighbour.setMovementCostFromStart(neighbourMovementCostFromStart);
                             float heuristicCost = heuristic.getHeuristicCost(neighbour.getX(), neighbour.getY(), endNode);
                             neighbour.setHeuristicCost(heuristicCost);
+//                            System.out.println("  current Node = " + current + ", MovementCost() = " + current.getMovementCostFromStart() + ", Distance with " + neighbour.getNodeName() + " = " + map.getDistanceBetween(current, neighbour) + ", neighbourMovementCostFromStart = " + neighbourMovementCostFromStart + " heuristicCost = "+heuristicCost);
                         }
                     }
                     // Sort the List on the basis of f-score

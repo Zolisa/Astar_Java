@@ -25,12 +25,14 @@ public class PathTracer
 
         System.out.println("\nSetting Up the Heuristic Approach ...");
 
-//        IHeuristic heuristic = new ManhattanHeuristic();
+        IHeuristic heuristic = new ManhattanHeuristic();
 //        IHeuristic heuristic = new EuclideanHeuristic();
-        IHeuristic heuristic = new DiagonalHeuristics();
+//        IHeuristic heuristic = new DiagonalHeuristics();
 
         System.out.println("\nExecuting A* on the map ...");
+        long start = System.currentTimeMillis();
         A_Star aStar = new A_Star(map, heuristic, true);
+        long end = System.currentTimeMillis();
 
         System.out.println("\nCalculating the Shortest Path ...");
         Path shortestPath = aStar.getShortestPath();
@@ -40,6 +42,8 @@ public class PathTracer
 
         if (shortestPath != null)
         {
+            long duration = end - start;
+            System.out.println("\nFound the Shortest Path in " + duration + " ms");
             int length = shortestPath.getLength();
             System.out.println("\nPrinting the TouchPoints ...");
             for (int i = 0; i < length; i++)
