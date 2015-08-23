@@ -13,7 +13,7 @@ import java.io.IOException;
 public class FileReadTest
 {
 
-    public static final String FILE_NAME = "C:\\Users\\Navaneeth Sen\\git\\Astar_Assignment\\src\\maps\\map_50x50.txt";
+    public static final String FILE_NAME = "src/maps/map_50x50.txt";
     static int width = 0;
     static int height = 0;
 
@@ -116,7 +116,7 @@ public class FileReadTest
         {
             for (int j = 0; j < width; j++)
             {
-                System.out.print(map[i][j] + "\t");
+                System.out.print(map[i][j]);
             }
             System.out.print("\n");
         }

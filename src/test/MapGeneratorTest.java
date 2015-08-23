@@ -16,7 +16,7 @@ import java.io.IOException;
 public class MapGeneratorTest
 {
 
-    public static final String FILE_NAME = "C:\\Users\\Navaneeth Sen\\git\\Astar_Assignment\\src\\test\\raw.txt";
+    public static final String FILE_NAME = "src/test/raw.txt";
     static int width = 0;
     static int height = 0;
 

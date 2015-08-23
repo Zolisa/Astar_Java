@@ -123,19 +123,20 @@ public class A_Star
                         float neighbourMovementCostFromStart = (current.getMovementCostFromStart() + map.getDistanceBetween(current, neighbour) + neighbour.getWeight());
 //                        System.out.println("  current Node = " + current + ", MovementCost() = " + current.getMovementCostFromStart() +", Distance with " + neighbour.getNodeName() + " = " +  map.getDistanceBetween(current, neighbour) +", neighbourMovementCostFromStart = " + neighbourMovementCostFromStart);
 
+                        // neighbour with the lower movement cost from start than cif we move from current to that node
+                        if (openList.contains(neighbour))
+                        {
+                            isGoodNeighbour = neighbourMovementCostFromStart < current.getMovementCostFromStart();
+                        }
                         // add neighbour to the open list if it is not there
-                        if (!openList.contains(neighbour))
+                        else
                         {
                             openList.add(neighbour);
 
                             // most of the walkable neighbours, closer to teh startNode is good for a jump
                             isGoodNeighbour = true;
                         }
-                        // neighbour with the lower movement cost from start than current
-                        else
-                        {
-                            isGoodNeighbour = neighbourMovementCostFromStart < current.getMovementCostFromStart();
-                        }
+
                         // set neighbors parameters if it a good neighbour
                         if (isGoodNeighbour)
                         {

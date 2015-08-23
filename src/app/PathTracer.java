@@ -15,12 +15,12 @@ import java.util.HashSet;
 
 public class PathTracer
 {
-    public static final String FILE_NAME = "C:\\Users\\Navaneeth Sen\\git\\Astar_Assignment\\src\\maps\\map_50x50.txt";
+    public static final String FILE_NAME = "src/maps/map_50x50.txt";
 
     public static void main(String[] args)
     {
 
-        System.out.println("\nGenerating Map from Text file ... ");
+        System.out.println("\nGenerating Map from file " + FILE_NAME + "... ");
         IMap map = new GridMap(FILE_NAME);
 
         System.out.println("\nSetting Up the Heuristic Approach ...");
@@ -30,7 +30,7 @@ public class PathTracer
         IHeuristic heuristic = new DiagonalHeuristics();
 
         System.out.println("\nExecuting A* on the map ...");
-        A_Star aStar = new A_Star(map, heuristic, false);
+        A_Star aStar = new A_Star(map, heuristic, true);
 
         System.out.println("\nCalculating the Shortest Path ...");
         Path shortestPath = aStar.getShortestPath();
