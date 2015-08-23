@@ -79,10 +79,6 @@ public class A_Star
             // while we haven't reached the end node
             while (openList.size() != 0)
             {
-//                System.out.println("-----------------------------------------------------------------------");
-//                System.out.println("OpenList [" + openList + "]");
-//                System.out.println("OpenList FIRST [" + openList.first() + "]");
-
                 // Get the first node from the not-searched list(It will be sorted based on the lowest cost)
                 Node current = openList.first();
 
@@ -144,7 +140,6 @@ public class A_Star
                             neighbour.setMovementCostFromStart(neighbourMovementCostFromStart);
                             float heuristicCost = heuristic.getHeuristicCost(neighbour.getX(), neighbour.getY(), endNode);
                             neighbour.setHeuristicCost(heuristicCost);
-//                            System.out.println("  current Node = " + current + ", MovementCost() = " + current.getMovementCostFromStart() + ", Distance with " + neighbour.getNodeName() + " = " + map.getDistanceBetween(current, neighbour) + ", neighbourMovementCostFromStart = " + neighbourMovementCostFromStart + " heuristicCost = "+heuristicCost);
                         }
                     }
                     // Sort the List on the basis of f-score
