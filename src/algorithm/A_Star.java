@@ -143,10 +143,10 @@ public class A_Star
                             float heuristicCost = heuristic.getHeuristicCost(neighbour.getX(), neighbour.getY(), endNode);
                             neighbour.setHeuristicCost(heuristicCost);
                         }
-                    }
-                    // Sort the List on the basis of f-score
-                    openList.sort();
+                    }// NWalkable Neighbour
                 } //END of Neighbour list
+                // Sort the List on the basis of f-score
+                openList.sort();
             }// END of Searching through the Nodes
         }// StartNode and EndNode not NULL
     }
