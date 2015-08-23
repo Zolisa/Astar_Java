@@ -49,7 +49,7 @@ public class GridMap extends AMap
      */
     private void constructNodeMap(char[][] char_map)
     {
-        Node node;
+        INode node;
 
         // Initialize the Node map
         map = new ArrayList<ArrayList<INode>>();
