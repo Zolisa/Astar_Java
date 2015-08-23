@@ -13,7 +13,7 @@ import java.io.IOException;
 public class FileReadTest
 {
 
-    public static final String FILE_NAME = "src/maps/map_50x50.txt";
+    public static final String FILE_NAME = "src/maps/map_10x10_test5.txt";
     static int width = 0;
     static int height = 0;
 
@@ -31,7 +31,7 @@ public class FileReadTest
         try
         {
             char[][] map = getMap(FILE_NAME);
-            printMap(map);
+            printMapAsAnArray(map);
         }
         catch (IOException e)
         {
@@ -120,5 +120,28 @@ public class FileReadTest
             }
             System.out.print("\n");
         }
+    }
+
+    public static void printMapAsAnArray(char[][] map)
+    {
+        System.out.print("[");
+        for (int i = 0; i < height; i++)
+        {
+            System.out.print("\"");
+            for (int j = 0; j < width; j++)
+            {
+                System.out.print(map[i][j]);
+            }
+            if (i == height-1)
+            {
+                System.out.print("\"");
+            }
+            else
+            {
+                System.out.print("\",");
+                System.out.print("\n");
+            }
+        }
+        System.out.print("];");
     }
 }
