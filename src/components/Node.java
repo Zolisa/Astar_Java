@@ -35,11 +35,6 @@ public abstract class Node implements INode
      */
     protected float heuristicCost = 0;
 
-    /**
-     * The search depth of this node
-     */
-    protected int depth;
-
     protected IMap map;
 
     protected float weight;
@@ -94,12 +89,9 @@ public abstract class Node implements INode
      * @return The depth we have no reached in searching
      */
     @Override
-    public int setParent(INode parent)
+    public void setParent(INode parent)
     {
-        depth = parent.getDepth() + 1;
         this.parent = parent;
-
-        return depth;
     }
 
     /**
@@ -122,12 +114,6 @@ public abstract class Node implements INode
     public int getY()
     {
         return y;
-    }
-
-    @Override
-    public int getDepth()
-    {
-        return depth;
     }
 
     /**

@@ -20,7 +20,7 @@ public interface INode extends Comparable<INode>
 
     void setMovementCostFromStart(float movementCost);
 
-    int setParent(INode parent);
+    void setParent(INode parent);
 
     int getX();
 
@@ -37,8 +37,6 @@ public interface INode extends Comparable<INode>
     float getWeight();
 
     void setWeight(float weight);
-
-    int getDepth();
 
     ArrayList<INode> getNeighbourList(boolean allowDiagonalMovement);
 
